@@ -208,17 +208,19 @@ Create graphs to explore the relationship between `bill_length_mm` and each of `
 Using these three graphs to discuss which of these three categorical variables seems to be contributing more to these two peaks and explain your reasoning.
 
 ```{r bill_length_by_species}
+ggplot(data = penguins) + 
+  geom_histogram(mapping = aes(x = bill_length_mm, fill= species))
 
 ```
 
 
 ```{r bill_length_by_sex}
-
+ggplot(data = penguins) + geom_histogram(mapping = aes(x = bill_length_mm, fill = sex))
 ```
 
 
 ```{r bill_length_by_island}
-
+ggplot(data = penguins) + geom_histogram(mapping = aes(x = bill_length_mm, fill=island))
 ```
 
 **Response**:
@@ -235,18 +237,20 @@ Here we continue exploring scatterplots using `{ggplot2}`.
 In the code chunk below, create a scatterplot for the relationship between `flipper_length_mm` and `body_mass_g`.
 
 ```{r flipper_vs_mass}
-
+ggplot(data = penguins,
+       mapping = aes(x = flipper_length_mm, y = body_mass_g)) + 
+  geom_point()
 ```
 
 Describe any patterns that you notice.
 
 **Response**:
-
+As the flipper length increases the body mass increases, there is a positive linear relationship between the two. 
 
 Recreate your scatterplot in the code chunk below; however,  *map* `species` to the `color` and `shape` aesthetics.
 
 ```{r flipper_vs_mass_with_species}
-
+ggplot(data = penguins, mapping = aes(x = flipper_length_mm, y = body_mass_g)) + geom_point()
 ```
 
 Describe any patterns that you notice.
