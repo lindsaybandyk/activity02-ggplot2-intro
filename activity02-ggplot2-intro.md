@@ -344,7 +344,7 @@ Recreate your scatterplot in the code chunk below; however, *map*
 `species` to the `color` and `shape` aesthetics.
 
 ``` r
-ggplot(data = penguins, mapping = aes(x = flipper_length_mm, y = body_mass_g)) + geom_point()
+ggplot(data = penguins, mapping = aes(x = flipper_length_mm, y = body_mass_g, color=species, shape=species)) + geom_point()
 ```
 
     ## Warning: Removed 2 rows containing missing values (geom_point).
@@ -353,7 +353,9 @@ ggplot(data = penguins, mapping = aes(x = flipper_length_mm, y = body_mass_g)) +
 
 Describe any patterns that you notice.
 
-**Response**:
+**Response**: All of the species have a relationship with the flipper
+length and the their body mass, for example the Adelie is the smallest
+flipper length and the body mass correlates with that, and so on.
 
 The previous plot looked great except even in this rather small dataset
 (n = 344), there might are a number of points overlapping. In the R code
@@ -362,9 +364,20 @@ aesthetic) of `size` (using some value larger than zero) and `alpha`
 (using some value between 0 and 1) to make your previous plot more
 effective.
 
+``` r
+ggplot(data = penguins, mapping = aes(x = flipper_length_mm, y = body_mass_g, color=species, shape=species)) + geom_point(size=4, alpha= .5)
+```
+
+    ## Warning: Removed 2 rows containing missing values (geom_point).
+
+![](activity02-ggplot2-intro_files/figure-gfm/flipper_vs_mass_with_size_alpha-1.png)<!-- -->
+
 Discuss the decisions you made to help your plot be easier to read.
 
-**Response**:
+**Response**: it increases the size which made it easier to read, and
+the places where alpha is a darker color it shows where the data is most
+centered which gives us a good idea of what the flipper length is and
+the body mass is in relation to the species.
 
 Knit, stage, commit (with a meaningful commit message),and push
 everything in your **Git** pane to your GitHub repo. Go to GitHub and
