@@ -147,8 +147,8 @@ code (i.e., replacing the `___`) to have our comparative boxplots also
 include some coloring.
 
 ``` r
-ggplot(data = penguins, mapping = aes(x = flipper_length_mm, y = species, fill= "Blue")) +
-  geom_boxplot()
+ggplot(data = penguins, mapping = aes(x = flipper_length_mm, y = species)) +
+  geom_boxplot(fill= "Red")
 ```
 
     ## Warning: Removed 2 rows containing non-finite values (stat_boxplot).
@@ -157,8 +157,8 @@ ggplot(data = penguins, mapping = aes(x = flipper_length_mm, y = species, fill= 
 
 Now, comment on what you notice from these boxplots.
 
-**Response**: well i did fill blue but it didnt actually fill blue,
-insteasd it filled red, but the spaces were in a spot where
+**Response**: well i did fill red and i made sure it was in the mapping
+section of the boxplot and not the basis of the ggplot.
 
 Another way to visualize distributions are with points. You may have
 heard of dotplots before (one-dimensional scatterplots). We can create
@@ -166,8 +166,8 @@ something similar with jitterplots using `geom_jitter`. In the code
 chunk below, complete it so that it produces a jitterplot.
 
 ``` r
-ggplot(data = penguins, mapping = aes(x = flipper_length_mm, y = species, fill = "red")) +
-  geom_jitter()
+ggplot(data = penguins, mapping = aes(x = flipper_length_mm, y = species)) +
+  geom_jitter(color = "red")
 ```
 
     ## Warning: Removed 2 rows containing missing values (geom_point).
@@ -183,7 +183,7 @@ boxplot? What about the jitterplot?
 From the boxplot i can easily determine the average bill length and the
 type of penguin that encompasses that length
 
-As for the jitterplot i can see the more concentrated values and where
+As for the jitterplot I can see the more concentrated values and where
 the “heaviest” amount of the plots are or where most of the bill lengths
 fall a bit more specifically.
 
@@ -193,7 +193,10 @@ and compare/contrast your `activity02-ggplot2-intro.Rmd` and
 `activity02-ggplot2-intro.md` files. Which is easier to read? Which
 looks more professional?
 
-**Response**:
+**Response**: The knit version is much more professional and I am
+completely able to read it and understand it, the previous Rmd is really
+messy and doesnt look like a nice document. It also very nicely shows
+the responses.
 
 Now, wouldn’t it be nice if we could combine these two plots so that we
 get the benefits of both!?! That is, how can we overlay the jitterplot
@@ -203,10 +206,25 @@ my *hint*:
 -   Re-create the boxplot with color that you did above, then
 -   *Add* another geometry layer for the jitterplot.
 
+``` r
+ggplot(data = penguins, mapping = aes(x = flipper_length_mm, y = species)) +
+  geom_boxplot(fill= "Red") + geom_jitter()
+```
+
+    ## Warning: Removed 2 rows containing non-finite values (stat_boxplot).
+
+    ## Warning: Removed 2 rows containing missing values (geom_point).
+
+![](activity02-ggplot2-intro_files/figure-gfm/box-jitter-combined-1.png)<!-- -->
+
 Play around with doing the jitterplot laid over the boxplot and the
 boxplot laid over the jitterplot. Which do you prefer? Why?
 
-**Response**:
+**Response**: I honestly really like both of them together because we
+are able to see both the strengths and the weaknesses of both graphs and
+it really isnt too confusing to read the data! I can see the
+concentration of each particular data collected and the overall in the
+boxplot.
 
 This is getting us closer to one of my favorite plots - the raincloud
 plot. We are not quite ready to create this plot, but we will get there
@@ -220,12 +238,25 @@ default white coloring. In the code chunk below, explore different
 methods to try to create this plot. A hint, all `geom_*` have a
 `mapping` argument.
 
+``` r
+ggplot(data = penguins, mapping = aes(x = flipper_length_mm, y = species)) +
+  geom_boxplot() + geom_jitter(color = "red")
+```
+
+    ## Warning: Removed 2 rows containing non-finite values (stat_boxplot).
+
+    ## Warning: Removed 2 rows containing missing values (geom_point).
+
+![](activity02-ggplot2-intro_files/figure-gfm/jitter-colored-only-1.png)<!-- -->
+
 In the above code chunk, continue to play around with having the
 aesthetics mapped in the different layers. For example, how does having
 all of them mapped in the `ggplot` call compared to having these instead
 mapped in the `geom_boxplot` layer? Comment on what you notice.
 
-**Response**:
+**Response**: The aestetics being in the main ggplot changes them for
+the entire code but when we change them in the boxplot or the jitter it
+is more specifically for that section alone.
 
 Knit, stage, commit (with a meaningful commit message),and push
 everything in your **Git** pane to your GitHub repo. Go to GitHub and
