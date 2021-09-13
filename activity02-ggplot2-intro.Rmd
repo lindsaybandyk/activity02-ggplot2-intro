@@ -114,14 +114,14 @@ For this boxplot, we want to double-encode the variable `species` to not only th
 In the code chunk below, add the missing code (i.e., replacing the `___`) to have our comparative boxplots also include some coloring.
 
 ```{r boxplot-colors}
-ggplot(data = penguins, mapping = aes(x = flipper_length_mm, y = species, ___ = ___)) +
-  geom_boxplot()
+ggplot(data = penguins, mapping = aes(x = flipper_length_mm, y = species)) +
+  geom_boxplot(fill= "Red")
 ```
 
 Now, comment on what you notice from these boxplots.
 
 **Response**:
-
+well i did fill red and i made sure it was in the mapping section of the boxplot and not the basis of the ggplot.
 
 Another way to visualize distributions are with points.
 You may have heard of dotplots before (one-dimensional scatterplots).
@@ -129,8 +129,8 @@ We can create something similar with jitterplots using `geom_jitter`.
 In the code chunk below, complete it so that it produces a jitterplot.
 
 ```{r jitterplot}
-ggplot(data = penguins, mapping = aes(x = flipper_length_mm, y = species, ___ = ___)) +
-  ___()
+ggplot(data = penguins, mapping = aes(x = flipper_length_mm, y = species)) +
+  geom_jitter(color = "red")
 ```
 
 Comment on the strengths of the boxplot compared to the jitterplot and visa versa.
@@ -138,6 +138,10 @@ That is, what can you easily determine by looking at the boxplot?
 What about the jitterplot?
 
 **Response**:
+
+From the boxplot i can easily determine the average bill length and the type of penguin that encompasses that length 
+
+As for the jitterplot I can see the more concentrated values and where the "heaviest" amount of the plots are or where most of the bill lengths fall a bit more specifically. 
 
 
 Knit, stage, commit (with a meaningful commit message),and push everything in your **Git** pane to your GitHub repo.
